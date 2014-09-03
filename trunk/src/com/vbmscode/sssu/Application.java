@@ -28,6 +28,7 @@ public class Application implements Runnable {
     
     double frameDuration;
     double frameRate;
+    double cameraRotateSpeed = 0.5;
     
     private Application () {
     }
@@ -59,6 +60,7 @@ public class Application implements Runnable {
     public void initRenderer () {
         
         try {
+            Display.setResizable(true);
             Display.setParent(canvas);
             Display.create();
             
@@ -116,5 +118,10 @@ public class Application implements Runnable {
             Display.update();
             Display.sync(60);
         }
+    }
+    
+    public void moveCamera (int x, int y) {
+        
+        scene.getCamera().rotate(x,y);
     }
 }

@@ -8,18 +8,22 @@ import org.lwjgl.opengl.GL11;
  */
 public class Scene {
     
+    Camera camera;
     int level = 10;
+    
+    public Scene () {
+        
+        camera = new Camera();
+    }
     
     public void render (Environment environment) {
         
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
         GL11.glLoadIdentity();
         
-        //GLU.gluLookAt(level, level, level, level, level, level, level, level, level);
-        //GL11.glTranslatef(0.0f, 0.0f, zTranslate);
+        camera.loadIdentity();
         
         GL11.glPushMatrix();
-        GL11.glTranslatef(-50, -50, 100);
         
         // draw environment charges
         
@@ -79,6 +83,11 @@ public class Scene {
         }
         
         return colors;
+    }
+    
+    public Camera getCamera () {
+       
+        return camera;
     }
     
 }
