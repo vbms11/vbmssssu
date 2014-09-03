@@ -12,17 +12,17 @@ import javax.swing.table.AbstractTableModel;
  */
 public class AttributesPanel extends javax.swing.JPanel {
     
-    Object[][] attributes = {
-        {"Resistance", 0.1},
-        {"Wave Duration", 1}
+    String[][] attributes = {
+        {"Resistance", "0.1"},
+        {"Wave Duration", "1"}
     };
     
     /**
      * Creates new form AttributesPanel
      */
     public AttributesPanel() {
-        
         initComponents();
+        
         jTable1.setModel(new AbstractTableModel () {
             @Override
             public int getColumnCount() { 
@@ -33,8 +33,14 @@ public class AttributesPanel extends javax.swing.JPanel {
                 return attributes.length;
             }
             @Override
-            public Object getValueAt(int row, int col) { 
-                return new Integer(row*col); 
+            public Object getValueAt(int row, int col) {
+                String value = attributes[row][col];
+                if (col == 0) {
+                    return value;
+                } else if (col == 1) {
+                    return Double.parseDouble(value); 
+                }
+                return null;
             }
             @Override
             public boolean isCellEditable(int row, int col) { 

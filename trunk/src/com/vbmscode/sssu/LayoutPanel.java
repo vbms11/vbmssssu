@@ -32,8 +32,10 @@ public class LayoutPanel extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         canvasPanel1 = new com.vbmscode.sssu.CanvasPanel();
+        attributesPanel1 = new com.vbmscode.sssu.AttributesPanel();
 
         jSplitPane1.setRightComponent(canvasPanel1);
+        jSplitPane1.setLeftComponent(attributesPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -47,6 +49,7 @@ public class LayoutPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.vbmscode.sssu.AttributesPanel attributesPanel1;
     private com.vbmscode.sssu.CanvasPanel canvasPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
