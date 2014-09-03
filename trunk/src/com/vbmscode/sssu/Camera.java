@@ -36,20 +36,20 @@ public class Camera {
         GLU.gluLookAt(x, y, z, direction.x, direction.y, direction.z, 0, 1, 0);
     }
     
-    public void rotateVertical (double degrees) {
+    public synchronized void rotateVertical (double degrees) {
         vAngel += degrees;
     }
     
-    public void rotateHorizontal (double degrees) {
+    public synchronized void rotateHorizontal (double degrees) {
         hAngel += degrees;
     }
     
-    public void rotate (double x, double y) {
+    public synchronized void rotate (double x, double y) {
         rotateHorizontal(x);
         rotateVertical(y);
     }
     
-    public void refreshDirection () {
+    public synchronized void refreshDirection () {
         float vx = (float) Math.cos(hAngel);
         float vz = (float) Math.sin(hAngel);
         float vy = (float) Math.sin(vAngel);
