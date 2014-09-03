@@ -49,6 +49,25 @@ public class Camera {
         rotateVertical(y);
     }
     
+    public synchronized void move (float x, float y, float z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        refreshDirection();
+    }
+    
+    public synchronized void moveForwald (float distance) {
+        float vx = (float) Math.cos(hAngel);
+        float vz = (float) Math.sin(hAngel);
+        float vy = (float) Math.sin(vAngel);
+        vx *= vy;
+        vz *= vz;
+        x = vx * distance;
+        y = vy * distance;
+        z = vz * distance;
+        refreshDirection();
+    }
+    
     public synchronized void refreshDirection () {
         float vx = (float) Math.cos(hAngel);
         float vz = (float) Math.sin(hAngel);
