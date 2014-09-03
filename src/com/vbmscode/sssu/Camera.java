@@ -20,7 +20,7 @@ public class Camera {
         this.x = 0;
         this.y = 0;
         this.z = 0;
-        direction.set(0, 0, 0);
+        direction = new Vector3f(0, 0, 1);
         direction.normalise();
     }
     
@@ -28,7 +28,7 @@ public class Camera {
         this.x = x;
         this.y = y;
         this.z = z;
-        direction.set(px - x, py - y, pz - z);
+        direction = new Vector3f(px - x, py - y, pz - z);
         direction.normalise();
     }
     
@@ -36,15 +36,17 @@ public class Camera {
         GLU.gluLookAt(x, y, z, direction.x, direction.y, direction.z, 0, 1, 0);
     }
     
-    public synchronized void rotateVertical (double degrees) {
+    public synchronized void rotateVertical (float degrees) {
         vAngel += degrees;
+        refreshDirection();
     }
     
-    public synchronized void rotateHorizontal (double degrees) {
+    public synchronized void rotateHorizontal (float degrees) {
         hAngel += degrees;
+        refreshDirection();
     }
     
-    public synchronized void rotate (double x, double y) {
+    public synchronized void rotate (float x, float y) {
         rotateHorizontal(x);
         rotateVertical(y);
     }
@@ -59,9 +61,9 @@ public class Camera {
     public synchronized void moveForwald (float distance) {
         float vx = (float) Math.cos(hAngel);
         float vz = (float) Math.sin(hAngel);
-        float vy = (float) Math.sin(vAngel);
+        float vy = (float) Math.cos(vAngel);
         vx *= vy;
-        vz *= vz;
+        vz *= vy;
         x = vx * distance;
         y = vy * distance;
         z = vz * distance;
@@ -71,9 +73,9 @@ public class Camera {
     public synchronized void refreshDirection () {
         float vx = (float) Math.cos(hAngel);
         float vz = (float) Math.sin(hAngel);
-        float vy = (float) Math.sin(vAngel);
+        float vy = (float) Math.cos(vAngel);
         vx *= vy;
-        vz *= vz;
+        vz *= vy;
         direction.setX(vx);
         direction.setZ(vz);
         direction.setY(vy);
