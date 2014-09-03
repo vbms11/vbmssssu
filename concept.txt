@@ -1,0 +1,46 @@
+
+synaptic 
+...types
+neurotransmitters
+    cholinerge Synapsen
+    adrenerge Synapsen
+    dopaminerge Synapsen
+    serotonerge Synapsen
+    glutamaterge Synapsen
+    glycinerge Synapsen
+    GABA-erge Synapsen
+    peptiderge Synapsen
+
+synaptic stimulation wave
+(due to neural transmitters returning to axon)
+
+ions coursing inhibitory or excitatory effect
+sodium 
+potasium
+calcium
+
+pulse accumelation speed
+pulse amplitude
+pulse transmition speed
+pulse duration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
