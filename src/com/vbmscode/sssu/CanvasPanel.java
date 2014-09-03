@@ -4,17 +4,73 @@
  */
 package com.vbmscode.sssu;
 
+import java.awt.Point;
+import java.awt.Robot;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
 /**
  *
  * @author Administrator
  */
 public class CanvasPanel extends javax.swing.JPanel {
-
+    
+    boolean mousePressed = false;
+    int lastX, lastY;
+    
     /**
      * Creates new form CanvasPanel
      */
     public CanvasPanel() {
         initComponents();
+        canvas1.setFocusable(true);                                
+        canvas1.setIgnoreRepaint(true);
+        super.addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                try {
+                    Point mousePoint = e.getPoint();
+                    Application.getInstance().moveCamera(lastX - mousePoint.x, lastY - mousePoint.y);
+                    Robot robot = new Robot();
+                    robot.mouseMove(lastX, lastY);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        super.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Point mousePoint = e.getPoint();
+                lastX = mousePoint.x;
+                lastY = mousePoint.y;
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                mousePressed = true;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mousePressed = false;
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
     }
     
     public java.awt.Canvas getCanvas () {

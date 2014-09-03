@@ -4,6 +4,8 @@
  */
 package com.vbmscode.sssu;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Administrator
@@ -15,6 +17,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
      */
     public ApplicationFrame() {
         initComponents();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public LayoutPanel getLayoutPanel () {
